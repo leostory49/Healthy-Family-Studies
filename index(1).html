@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>건강가정론 학습자료 | 2주차 ~ 6주차</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf7;
+    --sidebar-bg: #2d2a26;
+    --sidebar-text: #d4cfc4;
+    --sidebar-text-soft: #a39d91;
+    --sidebar-border: #45413b;
+    --text: #2a2a2a;
+    --text-soft: #5a5a5a;
+    --text-muted: #8a8a8a;
+    --border: #e5e0d5;
+    --border-soft: #ededed;
+    --accent: #8b2e2e;
+    --accent-soft: #c47b7b;
+    --accent-bg: #f9f0ef;
+    --accent-light: #e8a5a5;
+    --highlight: #f5e6a3;
+    --blue: #2c5282;
+    --blue-bg: #ebf2fa;
+    --card-bg: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 17px;
+  }
+
+  /* ===== 사이드바 ===== */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100vh;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--sidebar-border);
+    overflow-y: auto;
+    padding: 36px 26px;
+    z-index: 100;
+    color: var(--sidebar-text);
+  }
+
+  .sidebar-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #f0c6c6;
+    margin-bottom: 4px;
+    letter-spacing: -0.3px;
+  }
+
+  .sidebar-subtitle {
+    font-size: 12px;
+    color: var(--sidebar-text-soft);
+    letter-spacing: 2.5px;
+    margin-bottom: 32px;
+    text-transform: uppercase;
+  }
+
+  .toc { list-style: none; }
+
+  .toc-week {
+    margin-bottom: 22px;
+  }
+
+  .toc-week-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #f0c6c6;
+    padding: 6px 0;
+    margin-bottom: 6px;
+    border-bottom: 1px solid var(--sidebar-border);
+    letter-spacing: 0.5px;
+  }
+
+  .toc-lectures { list-style: none; padding-left: 8px; margin-top: 10px; }
+
+  .toc-lectures li {
+    margin-bottom: 3px;
+  }
+
+  .toc-lectures a {
+    display: block;
+    padding: 7px 12px;
+    font-size: 14px;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: all 0.15s ease;
+    border-radius: 2px;
+    line-height: 1.5;
+  }
+
+  .toc-lectures a:hover {
+    color: #fff;
+    background: rgba(232, 165, 165, 0.12);
+    border-left-color: var(--accent-light);
+  }
+
+  .toc-lectures a.active {
+    color: #fff;
+    background: rgba(232, 165, 165, 0.18);
+    border-left-color: var(--accent-light);
+    font-weight: 500;
+  }
+
+  /* ===== 메인 컨텐츠 ===== */
+  .main {
+    margin-left: 300px;
+    padding: 70px 90px 140px;
+    max-width: 1040px;
+  }
+
+  .hero {
+    border-bottom: 2px solid var(--text);
+    padding-bottom: 32px;
+    margin-bottom: 80px;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 52px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .hero-meta {
+    color: var(--text-muted);
+    font-size: 16px;
+  }
+
+  /* ===== 주차 섹션 ===== */
+  .week-section {
+    margin-bottom: 140px;
+    padding-top: 20px;
+  }
+
+  .week-header {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 48px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .week-number {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 60px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .week-label {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .week-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  /* ===== 강의 블록 ===== */
+  .lecture {
+    margin-bottom: 72px;
+    scroll-margin-top: 24px;
+  }
+
+  .lecture-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .lecture-tag {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 5px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 3px;
+  }
+
+  .lecture-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+
+  .lecture-outline {
+    background: var(--blue-bg);
+    border-left: 4px solid var(--blue);
+    padding: 16px 22px;
+    margin-bottom: 28px;
+    font-size: 15px;
+    color: var(--text-soft);
+  }
+
+  .lecture-outline-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--blue);
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .lecture-outline ol {
+    padding-left: 22px;
+  }
+
+  .lecture-outline li {
+    margin-bottom: 4px;
+  }
+
+  .textbook-note {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-left: 8px;
+  }
+
+  /* ===== 본문 ===== */
+  .topic {
+    margin-bottom: 40px;
+  }
+
+  .topic-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 18px;
+    padding-left: 14px;
+    border-left: 5px solid var(--accent);
+  }
+
+  .content-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin-bottom: 14px;
+  }
+
+  .content-card ul,
+  .content-card ol {
+    padding-left: 24px;
+  }
+
+  .content-card li {
+    margin-bottom: 10px;
+    line-height: 1.75;
+    font-size: 16px;
+  }
+
+  .content-card li:last-child { margin-bottom: 0; }
+
+  .content-card li ul,
+  .content-card li ol {
+    margin-top: 8px;
+    padding-left: 22px;
+  }
+
+  .content-card li li {
+    font-size: 15.5px;
+    color: var(--text-soft);
+    margin-bottom: 6px;
+  }
+
+  .keyword {
+    background: var(--highlight);
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+
+  .em {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ===== 비교 테이블 ===== */
+  .compare-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 14px 0;
+  }
+
+  .compare-cell {
+    background: #fff;
+    border: 1px solid var(--border-soft);
+    padding: 20px 22px;
+    border-radius: 4px;
+  }
+
+  .compare-cell h5 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--border);
+  }
+
+  .compare-cell ul {
+    padding-left: 20px;
+    font-size: 15.5px;
+  }
+
+  .compare-cell li { margin-bottom: 6px; line-height: 1.7; }
+
+  /* ===== 3열 박스 (Walsh 가족적응유연성) ===== */
+  .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin: 14px 0;
+  }
+
+  .three-col .compare-cell h5 {
+    font-size: 16px;
+  }
+
+  /* ===== 필기 메모 ===== */
+  .handwritten-note {
+    background: #fffdf5;
+    border: 1px dashed #d4b483;
+    border-radius: 4px;
+    padding: 18px 22px;
+    margin: 14px 0;
+    font-size: 15.5px;
+    color: #5c4a2a;
+    position: relative;
+    line-height: 1.75;
+  }
+
+  .handwritten-note::before {
+    content: "✎ 필기 메모";
+    display: block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #a87c3e;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .handwritten-note ul {
+    padding-left: 20px;
+  }
+
+  .handwritten-note li {
+    margin-bottom: 6px;
+  }
+
+  /* ===== 흐름 도식 (화살표) ===== */
+  .flow {
+    background: #fafafa;
+    border: 1px solid var(--border-soft);
+    border-radius: 4px;
+    padding: 16px 22px;
+    margin: 12px 0;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 16px;
+    text-align: center;
+    color: var(--text);
+    letter-spacing: 0.3px;
+  }
+
+  /* ===== 반응형 ===== */
+  @media (max-width: 900px) {
+    body { font-size: 16px; }
+    .sidebar {
+      position: static;
+      width: 100%;
+      height: auto;
+      padding: 24px;
+    }
+    .main {
+      margin-left: 0;
+      padding: 36px 24px 80px;
+    }
+    .hero-title { font-size: 36px; }
+    .week-number { font-size: 44px; }
+    .week-title { font-size: 22px; }
+    .lecture-title { font-size: 22px; }
+    .week-section { margin-bottom: 80px; }
+    .compare-table, .three-col {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===== 스크롤바 ===== */
+  .sidebar::-webkit-scrollbar { width: 7px; }
+  .sidebar::-webkit-scrollbar-track { background: transparent; }
+  .sidebar::-webkit-scrollbar-thumb { background: #5a554d; border-radius: 3px; }
+  .sidebar::-webkit-scrollbar-thumb:hover { background: #6e685f; }
+</style>
+</head>
+<body>
+
+<!-- ===== 사이드바 목차 ===== -->
+<nav class="sidebar">
+  <div class="sidebar-title">건강가정론</div>
+  <div class="sidebar-subtitle">2주차 ~ 6주차</div>
+
+  <ul class="toc">
+    <li class="toc-week">
+      <div class="toc-week-title">2주차 · 한국가족의 이해</div>
+      <ul class="toc-lectures">
+        <li><a href="#w2-1">1강. 가족전문가와 변화하는 한국가족</a></li>
+        <li><a href="#w2-2">2강. 조선중기 이후 한국가족</a></li>
+        <li><a href="#w2-3">3강. 현대 한국가족의 이해</a></li>
+      </ul>
+    </li>
+    <li class="toc-week">
+      <div class="toc-week-title">3주차 · 가족이론 Ⅰ</div>
+      <ul class="toc-lectures">
+        <li><a href="#w3-1">1강. 왜 가족이론? / 구조기능론</a></li>
+        <li><a href="#w3-2">2강. 가족구조·가족기능·평가</a></li>
+        <li><a href="#w3-3">3강. 상징적 상호작용론</a></li>
+      </ul>
+    </li>
+    <li class="toc-week">
+      <div class="toc-week-title">4주차 · 가족이론 Ⅱ</div>
+      <ul class="toc-lectures">
+        <li><a href="#w4-1">1강. 상징적 상호작용론 평가 / 생태체계론</a></li>
+        <li><a href="#w4-2">2강. 생태체계론 평가 / 가족생활주기</a></li>
+        <li><a href="#w4-3">3강. 가족생활주기 평가 / 가족적응유연성</a></li>
+      </ul>
+    </li>
+    <li class="toc-week">
+      <div class="toc-week-title">5주차 · 가족적응유연성과 가족정책</div>
+      <ul class="toc-lectures">
+        <li><a href="#w5-1">1강. 가족적응유연성 구성요소와 적용</a></li>
+        <li><a href="#w5-2">2강. 정책이란? / 가족정책의 주요이슈</a></li>
+        <li><a href="#w5-3">3강. 가족정책의 주요내용 · 아동수당</a></li>
+      </ul>
+    </li>
+    <li class="toc-week">
+      <div class="toc-week-title">6주차 · 북유럽 가족정책 비교</div>
+      <ul class="toc-lectures">
+        <li><a href="#w6-1">1강. 북유럽 3개국 시사점 / 스웨덴</a></li>
+        <li><a href="#w6-2">2강. 핀란드 · 노르웨이</a></li>
+        <li><a href="#w6-3">3강. 가족정책 논쟁점 / 한국 사회 시사점</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<!-- ===== 메인 ===== -->
+<main class="main">
+
+  <header class="hero">
+    <div class="hero-eyebrow">학습자료 통합본</div>
+    <h1 class="hero-title">건강가정론</h1>
+    <div class="hero-meta">2주차 ~ 6주차 · 전 15강 · 주교재 1장~</div>
+  </header>
+
+  <!-- ============ 2주차 ============ -->
+  <section class="week-section" id="w2">
+    <div class="week-header">
+      <div class="week-number">02</div>
+      <div>
+        <div class="week-label">Week 2</div>
+        <div class="week-title">한국가족의 이해</div>
+      </div>
+    </div>
+
+    <!-- 2주차 1강 -->
+    <div class="lecture" id="w2-1">
+      <div class="lecture-header">
+        <span class="lecture-tag">1강</span>
+        <h3 class="lecture-title">가족전문가와 변화하는 한국가족</h3>
+      </div>
+      <div class="lecture-outline">
+        <div class="lecture-outline-label">강의 개요</div>
+        <ol>
+          <li>'가족전문가'란?</li>
+          <li>"가족은 고정된 것이 아니다" — 변화하는 한국가족 <span class="textbook-note">주교재 1장</span></li>
+        </ol>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">1. 가족전문가란?</h4>
+        <div class="content-card">
+          <ul>
+            <li>"가족이란 무엇인가" — <span class="em">개인적 의미 vs 사회적 의미</span></li>
+            <li>사회적 차원의 가족을 이해하기
+              <ul>
+                <li>사회를 구성하는 가장 기본적 단위</li>
+                <li>법과 제도 속에서의 가족</li>
+                <li>사회와 역사의 변화의 흐름과 함께 <span class="keyword">역동적으로 움직이는 단위</span></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">2. 변화하는 한국 가족 — 조선중기 이전 vs 이후</h4>
+        <div class="compare-table">
+          <div class="compare-cell">
+            <h5>조선중기 이전</h5>
+            <ul>
+              <li>서류부가혼</li>
+              <li>양계적 가족문화</li>
+              <li>현대적 의미의 남녀평등 개념보다는 <span class="keyword">토착적 특성</span></li>
+            </ul>
+          </div>
+          <div class="compare-cell">
+            <h5>조선중기 이후</h5>
+            <ul>
+              <li>부계혈연 중심 유교가치관</li>
+              <li>남성위주의 가족문화</li>
+              <li>변화된 정치·경제·사회적 상황의 영향</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2주차 2강 -->
+    <div class="lecture" id="w2-2">
+      <div class="lecture-header">
+        <span class="lecture-tag">2강</span>
+        <h3 class="lecture-title">조선중기 이후 한국가족</h3>
+      </div>
+      <div class="lecture-outline">
+        <div class="lecture-outline-label">강의 개요</div>
+        <ol>
+          <li>과거 한국가족의 이해 — 조선중기 이후 한국가족의 특징</li>
+          <li>조선 중기 이후 한국 가족의 맥락 (정치적·경제적·사회적) <span class="textbook-note">주교재 1장 p.19부터</span></li>
+        </ol>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">1. 조선 중기 이후 한국가족의 특징</h4>
+        <div class="content-card">
+          <ul>
+            <li><span class="em">부계혈연 중심</span>의 배타적 질서</li>
+            <li><span class="em">가장권, 효 중시</span> — 위계적 질서 강조</li>
+            <li>부계혈통에 의한 <span class="keyword">'집'의 계승</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">2. 조선 중기 이후 한국 가족의 맥락</h4>
+        <div class="content-card">
+          <ul>
+            <li><span class="em">정치적 맥락</span> — 양반과 왕권의 끊임없는 헤게모니 싸움</li>
+            <li><span class="em">경제적 맥락</span> — 농업의 발달</li>
+            <li><span class="em">사회적 맥락</span> — 임진왜란, 병자호란 등 전쟁으로 혼란스런 민심</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2주차 3강 -->
+    <div class="lecture" id="w2-3">
+      <div class="lecture-header">
+        <span class="lecture-tag">3강</span>
+        <h3 class="lecture-title">현대 한국가족의 이해</h3>
+      </div>
+      <div class="lecture-outline">
+        <div class="lecture-outline-label">강의 개요</div>
+        <ol>
+          <li>현대 한국가족의 이해 — 민주화와 양성평등</li>
+          <li>현대 한국 가족의 변화의 맥락 — 가족법 개정, 가족관계등록부 <span class="textbook-note">주교재 1장 p.24부터</span></li>
+        </ol>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">1. 현대 한국 가족의 이해 — 민주화와 양성평등</h4>
+        <div class="content-card">
+          <ul>
+            <li><span class="em">1980년대 중반 이후</span> 민주화 운동</li>
+            <li>사회적 차원의 변화가 가족문화의 변화 주도</li>
+            <li>법과 제도에서의 변화</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">2. 현대 한국 가족 변화의 맥락</h4>
+        <div class="content-card">
+          <ul>
+            <li><span class="em">가족법 개정</span>
+              <ul>
+                <li>법과 제도에 존재하는 가족 내 남녀차별적·비민주적 요인 주목</li>
+                <li>친족의 범위, 상속, 양자제도, 이혼 시 재산분할</li>
+              </ul>
+            </li>
+            <li><span class="em">호주제 폐지 → 가족관계등록부</span>
+              <ul>
+                <li><span class="keyword">개인의 차원</span>: 개인을 어떻게 정의하는가</li>
+                <li><span class="keyword">가족의 차원</span>: 호주 중심의 정형화되고 부계중심적 가족 정의에서 벗어남</li>
+                <li><span class="keyword">사회적 차원</span>: 개인의 복지에 대한 사회적 책임 강조</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3주차 ============ -->
+  <section class="week-section" id="w3">
+    <div class="week-header">
+      <div class="week-number">03</div>
+      <div>
+        <div class="week-label">Week 3</div>
+        <div class="week-title">가족이론 Ⅰ · 구조기능론 & 상징적 상호작용론</div>
+      </div>
+    </div>
+
+    <!-- 3주차 1강 -->
+    <div class="lecture" id="w3-1">
+      <div class="lecture-header">
+        <span class="lecture-tag">1강</span>
+        <h3 class="lecture-title">왜 가족이론? / 구조기능론</h3>
+      </div>
+      <div class="lecture-outline">
+        <div class="lecture-outline-label">강의 개요</div>
+        <ol>
+          <li>왜 가족이론을 공부해야 하는가?</li>
+          <li>구조기능론</li>
+        </ol>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">1. 왜 가족이론을 배워야 하는가</h4>
+        <div class="content-card">
+          <ul>
+            <li>가족은 매우 <span class="em">개인적인 집단</span>이면서, 동시에 <span class="em">사회적 집단</span>이다.</li>
+            <li>개인적 경험으로 가족을 인식하지만, 사회로부터 영향을 받는 가족을 <span class="keyword">제3자의 관점</span>에서 인식할 수 있다.</li>
+            <li>나의 가족이 꼭 그 가족과 동일한 경험을 하지 않더라도, '전문가'는 어떤 가족 문제를 <span class="em">객관적이고 체계적으로 설명</span>하고 해답을 논의할 수 있는 <span class="em">설명틀</span>을 가져야 한다.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">2. 구조기능론</h4>
+        <div class="content-card">
+          <ul>
+            <li>산업화 초기 <span class="keyword">한국사회 70-80년대</span>를 떠올리자</li>
+            <li>핵심 관심: <span class="em">"가족의 구조와 기능"</span></li>
+            <li><span class="em">체계이론</span>에 기반: 하위체계, 상호의존성, 전체성, <span class="keyword">항상성</span></li>
+            <li>체계의 전체 질서(항상성)를 유지하기 위해 각 하위체계의 고유한 기능이 있듯이, 가족 역시 사회를 구성하는 하나의 하위체계로서 <span class="em">사회전체체계의 질서를 유지하기 위한 구조와 기능</span>이 있다.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3주차 2강 -->
+    <div class="lecture" id="w3-2">
+      <div class="lecture-header">
+        <span class="lecture-tag">2강</span>
+        <h3 class="lecture-title">가족구조 · 가족기능 · 평가</h3>
+      </div>
+      <div class="lecture-outline">
+        <div class="lecture-outline-label">강의 개요</div>
+        <ol>
+          <li>가족구조</li>
+          <li>가족기능</li>
+          <li>구조기능론 평가</li>
+        </ol>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">1. 가족구조</h4>
+        <div class="content-card">
+          <ul>
+            <li>사회의 <span class="em">하위체계</span></li>
+            <li>사회 질서 유지를 위하여 하위체계로서 제 기능을 다하는 <span class="keyword">'최선의', '완벽한' 형태(구조)</span>가 존재</li>
+            <li><span class="em">핵가족</span>
+              <ul>
+                <li>산업사회에서 가장 완벽하고 기능적인 구조</li>
+                <li>부모 + 미혼자녀</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">2. 가족기능</h4>
+        <div class="content-card">
+          <ul>
+            <li>사회의 질서(항상성)를 유지하기 위해 가족구조가 담당해야 하는 역할</li>
+            <li>가족구성원의 욕구 충족 + <span class="em">동시에</span> 가족외부적으로 사회에 잘 적응하는 사회구성원을 키워내야 함 → <span class="keyword">'사회화 기능'</span></li>
+            <li><span class="em">과업영역 + 역할위계</span></li>
+            <li>과업 → <span class="keyword">도구적 역할 vs 표현적 역할</span></li>
+            <li>역할위계(세대간 질서) → <span class="keyword">부모세대 vs 자녀세대</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">3. 구조기능론 평가</h4>
+        <div class="content-card">
+          <ul>
+            <li>초기 산업화 과정에서 <span class="em">핵가족의 출현과 그 기능</span>을 설명하는 데 유용함</li>
+            <li>산업화 속에서 핵가족에게 남은 최소한의 가족기능인 <span class="keyword">정서적 지원·사회화 기능</span> 설명에 적합</li>
+            <li><span class="em">한계 1</span>: 현대의 복잡한 가족현상을 설명하는 데 한계</li>
+            <li><span class="em">한계 2</span>: 이분법적 성역할 구조가 오늘날 변화하는 복잡한 가족 상황에 적절한가?</li>
+            <li><span class="em">한계 3</span>: 과연 가족이 '안식처'인가? → <span class="keyword">고정관념적·이상적 가족개념에 대한 비판</span> 제기</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3주차 3강 -->
+    <div class="lecture" id="w3-3">
+      <div class="lecture-header">
+        <span class="lecture-tag">3강</span>
+        <h3 class="lecture-title">상징적 상호작용론</h3>
+      </div>
+      <div class="lecture-outline">
+        <div class="lecture-outline-label">강의 개요</div>
+        <ol>
+          <li>상징적 상호작용론 개관</li>
+          <li>상징적 상호작용론 주요개념</li>
+        </ol>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">1. 상징적 상호작용론 개관</h4>
+        <div class="content-card">
+          <ul>
+            <li>가족들 간 상호작용을 통해 만들어가는 <span class="em">상징</span>에 대한 관심</li>
+            <li>같은 언어를 사용하고 오랫동안 함께 살아온 가족들이 왜 서로의 말을 잘 이해하지 못한다고 서운해 하는 것일까?</li>
+            <li>우리는 <span class="keyword">어떻게, 잘</span> 상호작용할 수 있는지를 배워야 한다.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">2. 주요개념</h4>
+        <div class="content-card">
+          <ul>
+            <li>상대방의 <span class="em">의도</span>를 파악해야 하는 것은 <span class="em">정신능력</span>이 필요하다.</li>
+            <li><span class="keyword">정신능력</span> → 상호작용을 통해 상징을 만들고 그것을 해석할 수 있어야 한다.
+              <ul>
+                <li>인간만이 가능한 인지능력</li>
+                <li>상징은 <span class="em">의사소통 수단</span></li>
+                <li>상징의 의미를 공유해야 원활한 의사소통이 가능</li>
+                <li>상징적 상호작용을 통해 사회적 규범·규칙을 인식하고, 그것에 맞추어 자신의 역할과 행동을 조절</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4주차 ============ -->
+  <section class="week-section" id="w4">
+    <div class="week-header">
+      <div class="week-number">04</div>
+      <div>
+        <div class="week-label">Week 4</div>
+        <div class="week-title">가족이론 Ⅱ · 생태체계론 · 가족발달론</div>
+      </div>
+    </div>
+
+    <!-- 4주차 1강 -->
+    <div class="lecture" id="w4-1">
+      <div class="lecture-header">
+        <span class="lecture-tag">1강</span>
+        <h3 class="lecture-title">상징적 상호작용론 평가 / 생태체계론</h3>
+      </div>
+      <div class="lecture-outline">
+        <div class="lecture-outline-label">강의 개요</div>
+        <ol>
+          <li>상징적 상호작용론의 적용과 평가</li>
+          <li>생태체계론의 주요내용</li>
+        </ol>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">1. 상징적 상호작용론의 적용과 평가</h4>
+        <div class="content-card">
+          <ul>
+            <li><span class="em">'역할긴장', '역할갈등'</span>
+              <ul>
+                <li>가족들 간 어떤 역할에 대해 얼마나 일치된 기대감을 갖는가</li>
+                <li>예) 맞벌이 가족의 배우자역할, 부모역할</li>
+              </ul>
+            </li>
+            <li>가족관계의 질을 높이기 위해 가족들이 좀 더 <span class="keyword">현실적인 역할기대</span>를 가지고 일상생활 속에서 필요한 관계 기술을 증진시키는 데 기여함</li>
+            <li>가족구성원들 간 상호작용 이면의 보이지 않는 내재된 과정에 주목 → '상징'을 주고받는 행동 관찰하여 <span class="em">행동의 심층적 의미</span> 주목</li>
+            <li><span class="em">한계</span>: 상징적 상호작용론의 개념이 너무 모호하고 추상적이라는 제한점</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">2. 생태체계론의 주요내용</h4>
+        <div class="content-card">
+          <ul>
+            <li><span class="em">생태학적 관점 + 체계론적 관점</span></li>
+            <li>인간의 성장과 발달은 인간을 둘러싼 <span class="keyword">다층적 환경(생태체계)</span>과의 상호작용을 통해 인간과 환경이 상호 영향을 미친다</li>
+            <li>주요개념
+              <ul>
+                <li>전체성</li>
+                <li>상호의존성</li>
+              </ul>
+            </li>
+            <li>생태체계의 종류: <span class="em">미시체계 · 중간체계 · 외체계 · 거시체계</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4주차 2강 -->
+    <div class="lecture" id="w4-2">
+      <div class="lecture-header">
+        <span class="lecture-tag">2강</span>
+        <h3 class="lecture-title">생태체계론 평가 / 가족생활주기</h3>
+      </div>
+      <div class="lecture-outline">
+        <div class="lecture-outline-label">강의 개요</div>
+        <ol>
+          <li>생태체계론의 적용과 평가</li>
+          <li>가족발달론 — 가족생활주기</li>
+        </ol>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">1. 생태체계론의 적용과 평가</h4>
+        <div class="content-card">
+          <ul>
+            <li>개인의 성장과 발달에 영향을 미치는 요인을 <span class="keyword">어느 한 가지로 단정짓기 어려움</span></li>
+            <li>개인의 삶과 관련된 환경의 복합적 영향력을 체계적으로 고려</li>
+            <li>가족을 둘러싼 다양한 문제에 대한 <span class="em">사회적 차원의 개입 필요성</span> 제고 — 예) <span class="keyword">건강가정기본법</span></li>
+            <li>개인과 가족문제를 <span class="em">단선적 인과관계가 아니라 다중적 체계들 간의 복합적 상호성</span>으로 설명함 → 보다 현실적이고 효과적인 문제해결의 기반</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">2. 가족발달론 — 가족생활주기</h4>
+        <div class="content-card">
+          <ul>
+            <li>가족현상을 어느 한 시점이 아니라 <span class="em">시간의 흐름</span>에 따라 성장·발달하는 것으로 간주</li>
+            <li><span class="em">가족생애과정(가족생활주기)</span>
+              <ul>
+                <li>가족은 <span class="keyword">형성 → 성장 → 소멸</span>에 이르는 보편적 가족생애단계</li>
+                <li>"순환"의 의미: 결혼 → 자녀양육 → 자녀독립 → 노년기</li>
+                <li><span class="em">가족발달과업</span>: 생애주기 별 보편적 역할기대 존재함</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="flow">결혼 → 자녀양육 → 자녀독립 → 노년기</div>
+      </div>
+    </div>
+
+    <!-- 4주차 3강 -->
+    <div class="lecture" id="w4-3">
+      <div class="lecture-header">
+        <span class="lecture-tag">3강</span>
+        <h3 class="lecture-title">가족생활주기 평가 / 가족적응유연성</h3>
+      </div>
+      <div class="lecture-outline">
+        <div class="lecture-outline-label">강의 개요</div>
+        <ol>
+          <li>가족생활주기의 적용과 평가</li>
+          <li>가족적응유연성</li>
+        </ol>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">1. 가족생활주기의 적용과 평가</h4>
+        <div class="content-card">
+          <ul>
+            <li><span class="em">유용성</span>
+              <ul>
+                <li>가족발달과업은 가족의 보편적 생애경험 → 앞으로 직면할 발달과업을 <span class="keyword">미리 인지하고 대비</span>하는 데 유용</li>
+                <li><span class="em">예방적 가족 사업</span>에 효과적으로 활용됨 → <span class="keyword">건강가정지원센터 사업계획의 중요한 틀</span></li>
+              </ul>
+            </li>
+            <li><span class="em">한계</span>: 가족형태의 다양화, 가족 내부의 시간표 변화 등으로 인해 <span class="keyword">보편적 시간표만으로 설명할 수 없는 복합적 가족문제</span>가 많아짐</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">2. 가족적응유연성</h4>
+        <div class="content-card">
+          <ul>
+            <li><span class="em">"가족이 어떻게 위기를 극복할 것인가"</span>
+              <ul>
+                <li>위기는 특별한 가족에게만 있는 것이 아니며 <span class="keyword">모든 가족이 경험한다</span></li>
+                <li>중요한 것은 <span class="em">'무엇이' 위기인가가 아니라, '어떻게' 극복하는가</span>이다</li>
+              </ul>
+            </li>
+            <li><span class="em">가족적응유연성</span>
+              <ul>
+                <li>적응유연성을 가족단위에 적용</li>
+                <li>위기란 '문제'가 아니라 가족을 더 나은 <span class="keyword">'성장'으로 이끄는 도전 과제</span></li>
+                <li>위기를 통해 그동안 깨닫지 못한 가족의 <span class="em">잠재력과 문제해결능력</span>을 발견</li>
+                <li><span class="em">'위기극복과정'에 관심</span>: 구체적으로 위기극복과정을 구성하는 요인이 무엇인가?</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5주차 ============ -->
+  <section class="week-section" id="w5">
+    <div class="week-header">
+      <div class="week-number">05</div>
+      <div>
+        <div class="week-label">Week 5</div>
+        <div class="week-title">가족적응유연성과 가족정책</div>
+      </div>
+    </div>
+
+    <!-- 5주차 1강 -->
+    <div class="lecture" id="w5-1">
+      <div class="lecture-header">
+        <span class="lecture-tag">1강</span>
+        <h3 class="lecture-title">가족적응유연성 구성요소와 적용</h3>
+      </div>
+      <div class="lecture-outline">
+        <div class="lecture-outline-label">강의 개요</div>
+        <ol>
+          <li>가족적응유연성 구성요소</li>
+          <li>가족적응유연성의 의의와 적용</li>
+        </ol>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">1. 가족적응유연성 구성요소 <span style="font-weight:400;color:var(--text-muted);font-size:13px;">(Walsh, 1998)</span></h4>
+        <div class="three-col">
+          <div class="compare-cell">
+            <h5>신념체계</h5>
+            <ul>
+              <li>역경에 대한 의미 부여</li>
+              <li>긍정적 시각</li>
+              <li>초월과 영성</li>
+            </ul>
+          </div>
+          <div class="compare-cell">
+            <h5>가족조직유형</h5>
+            <ul>
+              <li>융통성</li>
+              <li>연결성</li>
+              <li>사회 및 경제적 자원</li>
+            </ul>
+          </div>
+          <div class="compare-cell">
+            <h5>의사소통과정</h5>
+            <ul>
+              <li>명료화</li>
+              <li>개방적 정서표현</li>
+              <li>상호협력적 문제해결</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">2. 가족적응유연성의 의의와 적용</h4>
+        <div class="content-card">
+          <ul>
+            <li><span class="em">건강한 가족</span>이란 위기상황에도 불구하고 성공적으로 위기에 대처하여 <span class="keyword">이를 극복하는 노력과 의지를 발휘하는 가족</span></li>
+            <li><span class="em">가족정책에서 추구하는 기본방향 제시</span>
+              <ul>
+                <li>하나의 일관된 건강가정의 기본형을 제시하는 것이 아니라, <span class="keyword">가족이 잘 기능할 수 있는 조건과 환경</span>에 관심</li>
+                <li>가족의 잠재력 극대화를 위한 <span class="em">사회적 지원 모색</span></li>
+                <li>위기 가족뿐 아니라 <span class="em">모든 가족이 가족서비스 대상</span> — <span class="keyword">건강가정기본법</span></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5주차 2강 -->
+    <div class="lecture" id="w5-2">
+      <div class="lecture-header">
+        <span class="lecture-tag">2강</span>
+        <h3 class="lecture-title">정책이란? / 가족정책의 주요이슈</h3>
+      </div>
+      <div class="lecture-outline">
+        <div class="lecture-outline-label">강의 개요</div>
+        <ol>
+          <li>정책이란?</li>
+          <li>가족정책의 주요 이슈</li>
+        </ol>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">1. 정책이란?</h4>
+        <div class="content-card">
+          <ul>
+            <li><span class="em">보편적 vs 선별적</span></li>
+            <li><span class="em">제도적 vs 잔여적</span></li>
+          </ul>
+        </div>
+        <div class="content-card" style="margin-top:10px;">
+          <strong style="color:var(--accent);">가족정책의 핵심 질문 4가지</strong>
+          <ol style="margin-top:10px;">
+            <li>어떤 가족이?</li>
+            <li>무엇을?</li>
+            <li>어떤 자원을 투입?</li>
+            <li>어떤 경로를 통해?</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">2. 가족정책의 주요이슈</h4>
+        <div class="content-card">
+          <ul>
+            <li><span class="em">누가 / 어떤 혜택을 받는가?</span>
+              <ul>
+                <li>가족 vs 개인?</li>
+                <li>가족형태: <span class="keyword">핵가족, 맞벌이가족, 1인 가구 등 다양성 증가</span></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5주차 3강 -->
+    <div class="lecture" id="w5-3">
+      <div class="lecture-header">
+        <span class="lecture-tag">3강</span>
+        <h3 class="lecture-title">가족정책의 주요내용 · 아동수당</h3>
+      </div>
+      <div class="lecture-outline">
+        <div class="lecture-outline-label">강의 개요</div>
+        <ol>
+          <li>가족정책 주요내용</li>
+          <li>아동수당의 예</li>
+        </ol>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">1. 가족정책의 주요내용 — 무엇을 주는가?</h4>
+        <div class="three-col">
+          <div class="compare-cell">
+            <h5>① 현물지원</h5>
+          </div>
+          <div class="compare-cell">
+            <h5>② 현금지원</h5>
+          </div>
+          <div class="compare-cell">
+            <h5>③ 시간지원</h5>
+          </div>
+        </div>
+        <div class="content-card" style="margin-top:10px;">
+          <strong style="color:var(--accent);">정책 설계의 4가지 질문</strong>
+          <ol style="margin-top:10px;">
+            <li>어떤 가족이?</li>
+            <li>무엇을?</li>
+            <li>어떤 자원을 투입?</li>
+            <li>어떤 경로를 통해?</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">2. 아동수당의 예 — 정책 쟁점 5가지</h4>
+        <div class="content-card">
+          <ol>
+            <li><span class="em">아동수당 vs 양육수당 vs 가족수당</span> — 개념 구분</li>
+            <li><span class="em">취약계층 아동</span>은 어떻게 할 것인가?</li>
+            <li><span class="em">노인층, 미혼가구</span> 등 아동수당의 혜택을 받지 못하는 집단과의 <span class="keyword">형평성</span>은?</li>
+            <li>아동수당을 지탱하기 위한 <span class="em">조세부담, 근로의욕상실</span>을 어떻게 만회할 것인가?</li>
+            <li>아동수당이 <span class="em">아동복지 증진에 직접 기여</span>하는가?</li>
+          </ol>
+        </div>
+        <div class="content-card" style="margin-top:10px;background:#f8f6f0;">
+          <strong style="color:var(--text-soft);font-size:13px;">📊 주요 출산·양육지원 정책 구조 [그림 2-1]</strong>
+          <ul style="margin-top:10px;font-size:13.5px;">
+            <li><span class="em">돌봄지원</span> — 서비스 이용(보육서비스 제공·보육료 지원) / 가정양육(가정양육수당) / 노동시장 참여(출산전후휴가급여·육아휴직급여)</li>
+            <li><span class="em">경제적 지원</span> — 보편적 아동수당 / 출산지원금 / 조세혜택(자녀장려금, 자녀 인적공제·아동 교육비·의료비 공제 등)</li>
+          </ul>
+          <div style="margin-top:10px;font-size:11.5px;color:var(--text-muted);">출처: 조성은 외(2019). 아동수당 제도 발전방안에 관한 연구, p.76.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6주차 ============ -->
+  <section class="week-section" id="w6">
+    <div class="week-header">
+      <div class="week-number">06</div>
+      <div>
+        <div class="week-label">Week 6</div>
+        <div class="week-title">북유럽 가족정책 비교와 한국 사회 시사점</div>
+      </div>
+    </div>
+
+    <!-- 6주차 1강 -->
+    <div class="lecture" id="w6-1">
+      <div class="lecture-header">
+        <span class="lecture-tag">1강</span>
+        <h3 class="lecture-title">북유럽 3개국 시사점 / 스웨덴 : 여성노동권</h3>
+      </div>
+      <div class="lecture-outline">
+        <div class="lecture-outline-label">강의 개요</div>
+        <ol>
+          <li>북유럽 3개국 가족정책의 시사점</li>
+          <li>스웨덴: 여성노동권</li>
+        </ol>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">1. 북유럽 3개국 가족정책의 시사점</h4>
+        <div class="content-card">
+          <ul>
+            <li>북유럽 3국 — <span class="em">스웨덴, 핀란드, 노르웨이</span>의 가족정책 비교</li>
+            <li>각국의 <span class="keyword">인구구성, 지리적 여건, 가족에 대한 담론, 사회경제적 상황</span> 등에 따라 복지국가의 가족정책이 어떻게 상이하게 전개되는지 비교</li>
+            <li>궁극적으로 <span class="em">우리 사회의 가족정책이 나아가야 할 방향성</span> 고민</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">2. 스웨덴 : 여성노동권</h4>
+        <div class="content-card">
+          <div class="flow">높은 여성취업률 달성 → 완전고용 → 연금·공보험제도 → 복지신화</div>
+        </div>
+        <div class="compare-table">
+          <div class="compare-cell">
+            <h5>배경 (필요성)</h5>
+            <ul>
+              <li>저출산 / 고령화 문제 해결 위해</li>
+              <li>외부 노동력 유입 어려움 (지리·기후적 요인)</li>
+              <li>총인구 750~800만 <span class="keyword">소규모</span></li>
+              <li>새로운 노동력 창출 어려움</li>
+            </ul>
+          </div>
+          <div class="compare-cell">
+            <h5>정책 방향</h5>
+            <ul>
+              <li>여성노동력 <span class="em">단절 최소화</span> 정책 → <span class="keyword">two-income family</span> 보편화</li>
+              <li>이혼·별거 증가에도 개별 가족의 <span class="em">소득원 위협 없도록</span></li>
+              <li>아동수당보다는 <span class="keyword">노동시장 취업 선호</span> → 육아휴직, 공보육, 취업재교육 선호</li>
+              <li>아동수당 → 취업이 어려운 계층(외벌이·이민가족 여성)에 대한 경제적 지원 취지 강함</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6주차 2강 -->
+    <div class="lecture" id="w6-2">
+      <div class="lecture-header">
+        <span class="lecture-tag">2강</span>
+        <h3 class="lecture-title">핀란드 · 노르웨이</h3>
+      </div>
+      <div class="lecture-outline">
+        <div class="lecture-outline-label">강의 개요</div>
+        <ol>
+          <li>핀란드: 부모권</li>
+          <li>노르웨이</li>
+        </ol>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">1. 핀란드 : 부모권</h4>
+        <div class="content-card">
+          <div class="flow">가족주의 강조 → 부모권리 중시 → 아동양육에서의 선택권 → 계층별 차별화</div>
+        </div>
+        <div class="compare-table">
+          <div class="compare-cell">
+            <h5>배경 (필요성)</h5>
+            <ul>
+              <li>여성취업률 낮음</li>
+              <li>일-가족 병행이 쉽지 않음</li>
+              <li><span class="em">가족주의 가치관 강조</span></li>
+              <li>공보육의 불평등성 제기</li>
+              <li>공보육 대신 <span class="keyword">아동수당</span>의 대안 요구</li>
+            </ul>
+          </div>
+          <div class="compare-cell">
+            <h5>정책 방향</h5>
+            <ul>
+              <li>아동을 양육할 방식에 대한 <span class="em">부모 선택권</span> 중요시</li>
+              <li>공보육서비스를 취업 맞벌이 부모와 비취업 외벌이 가족이 모두 그 혜택 받는 것은 <span class="keyword">불공평</span></li>
+              <li>비취업모 → <span class="em">아동수당</span>, 취업모 → <span class="em">공보육</span></li>
+              <li>중산층 이상 → 비취업·아동수당</li>
+              <li>저소득층 → 취업·공보육</li>
+            </ul>
+          </div>
+        </div>
+        <div class="handwritten-note">
+          <ul>
+            <li><span class="em">부모가 선택</span> → 자녀를 스스로 키우려는 가족 ↑</li>
+            <li>P142 표: <span class="keyword">공보육 + 아동수당 동시에 도입</span> → 부모가 무엇을 선택할 것인가</li>
+            <li>비취업모 → 아동수당 (민간시장·사교육으로 흐름)</li>
+            <li>중산층 이상 → 비취업-아동수당 → 민간교육(계층 차이)</li>
+            <li><span class="em">공보육은 주거지</span>(가까운 지역사회 중심)</li>
+            <li>계층 차이 발생 가능</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">2. 노르웨이</h4>
+        <div class="content-card">
+          <ul>
+            <li><span class="em">아동수당(1998) → 공보육(0-2세) 확대(2009)</span></li>
+            <li>핀란드와 마찬가지로 <span class="keyword">부모 선택권 강화</span> 차원에서 아동수당이 먼저 도입</li>
+            <li>아동수당 확대로 인한 <span class="em">재정적 압박 + 여성의 사회참여 증가</span>
+              <ul>
+                <li>공보육 정착을 통해 <span class="keyword">여성의 노동시장 참여 촉진 + 새로운 일자리 창출</span> 시도함</li>
+              </ul>
+            </li>
+            <li><span class="em">아동수당 + 시간제 공보육 / 아동수당 없이 전일제 공보육</span>
+              <ul>
+                <li>여러 조합으로 공보육 확대</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="handwritten-note">
+          <ul>
+            <li><span class="em">위치</span>: 스웨덴과 핀란드 사이 / 후발주자 → 두 정책 잘 이용</li>
+            <li>원래 아동수당만 (부모권 중시) → 2009년 공보육 시스템 택함 <span class="keyword">(경제위기 + 아동수당 압박)</span></li>
+            <li>수당은 보편적 정책 → 자연스럽게 계층 차이 연결 → 경제활성·계층차 극복</li>
+            <li>가족가치관 중시하는 상황에서 자녀를 잘 키우는 맥락</li>
+            <li><span class="em">어쨌거나 공보육 통해 노동시장 참여 촉진</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">💡 3국 비교 요약 <span style="font-weight:400;color:var(--text-muted);font-size:13px;">(필기 종합)</span></h4>
+        <div class="three-col">
+          <div class="compare-cell">
+            <h5>스웨덴</h5>
+            <ul>
+              <li>공보육 · 노동권 강조</li>
+              <li>보육시설 많이 지원</li>
+              <li>two-income family</li>
+            </ul>
+          </div>
+          <div class="compare-cell">
+            <h5>핀란드</h5>
+            <ul>
+              <li>수당 · 계층차 보임</li>
+              <li>민간시장에서 사교육 유발</li>
+              <li>자녀양육 기능을 부모에게 강화</li>
+            </ul>
+          </div>
+          <div class="compare-cell">
+            <h5>노르웨이</h5>
+            <ul>
+              <li>스웨덴 ↔ 핀란드 사이</li>
+              <li>두 정책 병행</li>
+              <li>공보육 통해 노동시장 참여</li>
+            </ul>
+          </div>
+        </div>
+        <div class="handwritten-note">
+          <ul>
+            <li><span class="em">우리 사회 질문</span>: 부모권 중시(자녀양육 교육열) vs 노동력 활용</li>
+            <li>우리 사회의 정책·돌봄정책을 보자 / 가족가치관을 보자</li>
+            <li><span class="keyword">BUT 계층 차이 유발</span> — 부모권 강조의 그림자</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6주차 3강 -->
+    <div class="lecture" id="w6-3">
+      <div class="lecture-header">
+        <span class="lecture-tag">3강</span>
+        <h3 class="lecture-title">가족정책 논쟁점 / 한국 사회 시사점</h3>
+      </div>
+      <div class="lecture-outline">
+        <div class="lecture-outline-label">강의 개요</div>
+        <ol>
+          <li>가족정책의 논쟁점</li>
+          <li>한국 가족정책에서의 시사점</li>
+        </ol>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">1. 가족정책 논쟁점</h4>
+        <div class="content-card">
+          <ul>
+            <li>가족정책의 형태는 사회의 <span class="em">가족가치관, 사회경제적 조건</span> 등 복합적 고려를 통해 사회가 어떤 합의를 이끌어 내는가?
+              <ul>
+                <li><span class="keyword">스웨덴의 예</span>: 완전고용, 불평등 해소 → 공보육 선호</li>
+                <li><span class="keyword">핀란드의 예</span>: 가족중심가치관 → 아동수당 ↔ 공보육정책</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="compare-table">
+          <div class="compare-cell">
+            <h5>탈가족화 정책</h5>
+            <ul>
+              <li>가족이 수행하던 역할을 <span class="em">사회화</span></li>
+              <li>예: 보육정책, 돌봄정책</li>
+              <li>→ 평등성, 탈계층화 지향</li>
+            </ul>
+          </div>
+          <div class="compare-cell">
+            <h5>가족화 정책</h5>
+            <ul>
+              <li>가족의 고유한 기능을 인정하면서 국가가 이를 <span class="em">더 강화</span>시키는 정책</li>
+              <li>예: 아동수당, 육아휴직</li>
+              <li>→ 일부 가족에게 쏠림, 계층화</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h4 class="topic-title">2. 한국 사회 시사점</h4>
+        <div class="content-card">
+          <ul>
+            <li><span class="em">평등의 가치 vs 다양한 계층적 요구?</span></li>
+            <li><span class="em">부모와 가족의 고유기능 강조 vs 계층의 양극화 심화?</span></li>
+            <li>사회의 어떤 계층이 <span class="keyword">공보육, 아동수당, 육아휴직</span> 등에서 이득을 취하는가 → <span class="em">수혜대상·정책 결과에 대한 분석 필요</span></li>
+            <li><span class="em">1인가구의 보편화</span> 등 가족형태 변화에 대한 향후 전망
+              <ul>
+                <li>가족단위의 보살핌 기능이 약화되고 <span class="keyword">국가의 가족복지 기능 강화</span>될 것</li>
+                <li>동시에 사회의 가족 보살핌 서비스 기능의 <span class="keyword">"질"에 대한 강조</span></li>
+                <li><span class="em">탈가족화정책과 가족화정책의 적절한 병행</span>: <span class="keyword">개별 가족의 선택권을 존중하면서 어떻게 계층적 차이를 완화시킬 수 있을까?</span></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="margin-top:80px;padding-top:24px;border-top:1px solid var(--border);text-align:center;color:var(--text-muted);font-size:12px;">
+    건강가정론 학습자료 · 2주차 ~ 6주차 통합본
+  </footer>
+
+</main>
+
+<script>
+  // 현재 섹션 하이라이트 (스크롤 위치 추적)
+  const lectureLinks = document.querySelectorAll('.toc-lectures a');
+  const lectureSections = document.querySelectorAll('.lecture');
+
+  function updateActiveLink() {
+    let currentId = '';
+    const scrollY = window.pageYOffset;
+    const offset = 120;
+
+    lectureSections.forEach(section => {
+      const top = section.offsetTop - offset;
+      if (scrollY >= top) {
+        currentId = section.id;
+      }
+    });
+
+    lectureLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + currentId) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveLink);
+  window.addEventListener('load', updateActiveLink);
+</script>
+
+</body>
+</html>
